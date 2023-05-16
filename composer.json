@@ -1,0 +1,39 @@
+{
+    "name": "kreci-net/star-rating",
+    "description": "Interactive star ratings with hover and click functionality in JavaScript/PHP",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+      {
+        "name": "Krzyszof Kwiatkowski",
+        "email": "kreci@kreci.net"
+      }
+    ],
+    "require": {
+      "php": "^7.2"
+    },
+    "autoload": {
+      "psr-4": {
+        "net\\kreci\\StarRating\\": "src/"
+      }
+    },
+    "autoload-dev": {
+      "psr-4": {
+        "net\\kreci\\StarRating\\": "test/"
+      }
+    },
+    "require-dev": {
+      "phpunit/phpunit": "^9.5"
+    },
+    "scripts": {
+      "test": "phpunit"
+    },
+    "repositories": [
+      {
+        "type": "vcs",
+        "url": "https://github.com/KreCi-NET/star-rating"
+      }
+    ],
+    "minimum-stability": "dev"
+  }
+  
