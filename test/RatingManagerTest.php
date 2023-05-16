@@ -2,21 +2,37 @@
 
 namespace net\kreci\StarRating;
 
-require '../src/rating.php';
-
 use PHPUnit\Framework\TestCase;
 
 class RatingManagerTest extends TestCase {
   private $ratingManager;
+  private $csvFile = 'test_ratings.csv';
 
   protected function setUp(): void {
-    $this->ratingManager = new RatingManager('test_ratings.csv');
+    $this->ratingManager = new RatingManager($this->csvFile);
+    $this->prepareTestData();
   }
 
   protected function tearDown(): void {
-    if (file_exists('test_ratings.csv')) {
-      unlink('test_ratings.csv');
+    if (file_exists($this->csvFile)) {
+      unlink($this->csvFile);
     }
+  }
+
+  private function prepareTestData(): void {
+    // Prepare test data
+    $data = [
+      ['1', '10', '4.5'],
+      ['2', '1', '5'],
+      ['3', '1', '5']
+    ];
+
+    // Write test data to CSV file
+    $handle = fopen($this->csvFile, 'w');
+    foreach ($data as $row) {
+      fputcsv($handle, $row);
+    }
+    fclose($handle);
   }
 
   public function testGetRating(): void {
@@ -26,11 +42,11 @@ class RatingManagerTest extends TestCase {
   }
 
   public function testSetRating(): void {
-    $this->ratingManager->setRating(1, 4.5);
-    $this->assertEquals('{"average":4.5,"total":1}', $this->ratingManager->getRating(1));
+    $this->ratingManager->setRating(5, 4.5);
+    $this->assertEquals('{"average":4.5,"total":1}', $this->ratingManager->getRating(5));
 
-    $this->ratingManager->setRating(1, 3);
-    $this->assertEquals('{"average":3.75,"total":2}', $this->ratingManager->getRating(1));
+    $this->ratingManager->setRating(5, 3);
+    $this->assertEquals('{"average":3.75,"total":2}', $this->ratingManager->getRating(5));
   }
 }
 
