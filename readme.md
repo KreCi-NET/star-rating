@@ -9,6 +9,10 @@ This rating script is a JavaScript/PHP component that allows users to rate an el
 - Sends the rating data to the server-side `rating.php` script for storage.
 - Retrieves the initial rating from the `rating.php` script upon page load.
 
+### Demo
+
+Here you will find an implemented [star rating demo](https://dev.kreci.net/stars/). You may click on stars to submit the rating to the server and refresh the page to see average rating.
+
 ### Usage
 
 1. Include the JavaScript file `stars.js` in your HTML file (after the rating element):
