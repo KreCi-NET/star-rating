@@ -32,7 +32,7 @@ Note: You can modify the number of stars by adding or removing `<span>` elements
 
 3. The script can rate multiple elements and stores the data in CSV file (`ratings.csv` in the example). The ID of rated element is extracted from the current URL using patterns like `"domain.com/?123,somedescription"`, `"domain.com/index.html?123"` or `"domain.com/index.php?123"`. You can modify the pattern by editing the `getID()` function in the `stars.js` file. If the ID is not found in the URL, it uses the `const failOverID` from the `stars.js` file.
 
-## Server-side Script (RatingManager.php)
+### Server-side Script (RatingManager.php)
 
 The server-side script (`RatingManager.php`) is responsible for processing and storing the rating data. It receives the rating value and the ID of the item being rated through the URL parameters and stores those in CSV file. 
 

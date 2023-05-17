@@ -5,15 +5,15 @@ namespace net\kreci\StarRating;
 require_once('RatingManager.php');
 
 // How To Use:
-@$productId = $_GET['id'];
-@$rating = $_GET['rating'];
-@$type = $_GET['type'];
+@$productId = filter_input(INPUT_GET, 'id', FILTER_VALIDATE_INT);
+@$rating = filter_input(INPUT_GET, 'rating', FILTER_VALIDATE_FLOAT);
+@$type = filter_input(INPUT_GET, 'type', FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(set|get)$/")));
 
 $ratingManager = new RatingManager('ratings.csv');
 
-if (isset($rating) && $type == 'set') {
+if ($rating !== false && $type === 'set') {
     $ratingManager->setRating($productId, $rating);
-} elseif ($type == 'get') {
+} elseif ($type === 'get') {
     $productRating = $ratingManager->getRating($productId);
     echo $productRating;
 }
