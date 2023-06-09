@@ -12,8 +12,11 @@ require_once('../vendor/autoload.php');
 @$rating = filter_input(INPUT_GET, 'rating', FILTER_VALIDATE_FLOAT);
 @$type = filter_input(INPUT_GET, 'type', FILTER_VALIDATE_REGEXP, array("options" => array("regexp" => "/^(set|get)$/")));
 
-// Create RatingManager object with CSV file to store ratings.
-$ratingManager = new RatingManager('ratings.csv');
+
+// Create StorageManager object (you may create your own by implementing StorageInterface)
+$storageManager = new StorageCSV('ratings.csv');
+// Create RatingManager object and pass StorageManager to store ratings.
+$ratingManager = new RatingManager($storageManager);
 
 // Set and get rating data with RatingManager::setRating and RatingManager::getRating methods.
 if ($rating !== false && $type === 'set') {

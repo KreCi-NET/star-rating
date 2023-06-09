@@ -7,9 +7,11 @@ use PHPUnit\Framework\TestCase;
 class RatingManagerTest extends TestCase {
   private $ratingManager;
   private $csvFile = 'test_ratings.csv';
+  private $storageManager;
 
   protected function setUp(): void {
-    $this->ratingManager = new RatingManager($this->csvFile);
+    $this->storageManager = new StorageCSV($this->csvFile);
+    $this->ratingManager = new RatingManager($this->storageManager);
     $this->prepareTestData();
   }
 
