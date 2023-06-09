@@ -14,12 +14,12 @@
     },
     "autoload": {
       "psr-4": {
-        "net\\kreci\\StarRating\\": "src/"
+        "KreCiNET\\StarRating\\": "src/"
       }
     },
     "autoload-dev": {
       "psr-4": {
-        "net\\kreci\\StarRating\\": "test/"
+        "KreCiNET\\StarRating\\": "test/"
       }
     },
     "require-dev": {

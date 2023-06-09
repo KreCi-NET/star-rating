@@ -1,6 +1,6 @@
 <?php
 
-namespace net\kreci\StarRating;
+namespace KreCiNET\StarRating;
 
 use PHPUnit\Framework\TestCase;
 

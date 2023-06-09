@@ -1,7 +1,7 @@
-const failOverID = 1;
+const failOverID = 1; // Default product ID if not provided from URL
 const stars = document.querySelectorAll('.rating-stars .star');
-let currentRating = 5;
-let id = 0;
+let currentRating = 5; // Default rating if no data for selected ID
+let id = 0; // Default product ID if not provided from URL
 
 // Mouse over and click listeners
 stars.forEach(star => {
