@@ -5,8 +5,8 @@ namespace KreCiNET\StarRating;
 class ProductClass
 {
     private int $productID;
-    private float $ratingAverage;
-    private int $ratingTotal;
+    private float $ratingAverage = 0;
+    private int $ratingTotal = 0;
     private StorageInterface $storageManager;
 
     public function __construct(int $productID, StorageInterface $storageManager)
@@ -23,17 +23,12 @@ class ProductClass
         if ($productData !== null) {
             $this->ratingAverage = round($productData['average'], 2);
             $this->ratingTotal = $productData['total'];
-        } else {
-            $this->ratingAverage = 5;
-            $this->ratingTotal = 1;
         }
     }
 
     private function saveProduct()
     {
-        $ratingData['total'] = $this->ratingTotal;
-        $ratingData['average'] = $this->ratingAverage;
-        $this->storageManager->saveRating($this->productID, $ratingData);
+        $this->storageManager->saveRating($this->productID, $this->ratingTotal, $this->ratingAverage);
     }
 
     public function getRating(): float
@@ -56,8 +51,8 @@ class ProductClass
     public function getJSON(): string
     {
         $ratingData['id'] = $this->productID;
-        $ratingData['total'] = $this->ratingTotal;
         $ratingData['average'] = $this->ratingAverage;
+        $ratingData['total'] = $this->ratingTotal;
         return json_encode($ratingData);
     }
 }

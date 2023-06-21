@@ -38,17 +38,17 @@ class RatingManagerTest extends TestCase {
   }
 
   public function testGetRating(): void {
-    $this->assertEquals('{"average":4.5,"total":10}', $this->ratingManager->getRating(1));
-    $this->assertEquals('{"average":5,"total":1}', $this->ratingManager->getRating(2));
-    $this->assertEquals('{"average":5,"total":1}', $this->ratingManager->getRating(3));
+    $this->assertEquals('{"id":1,"average":4.5,"total":10}', $this->ratingManager->getRating(1));
+    $this->assertEquals('{"id":2,"average":5,"total":1}', $this->ratingManager->getRating(2));
+    $this->assertEquals('{"id":3,"average":5,"total":1}', $this->ratingManager->getRating(3));
   }
 
   public function testSetRating(): void {
     $this->ratingManager->setRating(5, 4.5);
-    $this->assertEquals('{"average":4.5,"total":1}', $this->ratingManager->getRating(5));
+    $this->assertEquals('{"id":5,"average":4.5,"total":1}', $this->ratingManager->getRating(5));
 
     $this->ratingManager->setRating(5, 3);
-    $this->assertEquals('{"average":3.75,"total":2}', $this->ratingManager->getRating(5));
+    $this->assertEquals('{"id":5,"average":3.75,"total":2}', $this->ratingManager->getRating(5));
   }
 }
 

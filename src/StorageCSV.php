@@ -32,12 +32,12 @@ class StorageCSV implements StorageInterface
         return null;
     }
 
-    public function saveRating(int $productId, array $ratingData)
+    public function saveRating(int $productId, int $ratingTotal, float $ratingAverage)
     {
         $data = [
             $productId,
-            $ratingData['total'],
-            $ratingData['average']
+            $ratingTotal,
+            $ratingAverage
         ];
 
         if (!file_exists($this->csvFile)) {
