@@ -38,7 +38,7 @@ Note: You can modify the number of stars by adding or removing `<span>` elements
 
 ### Server-side Script (RatingManager.php)
 
-The server-side script (`RatingManager.php`) is responsible for processing and storing the rating data. It receives the rating value and the ID of the item being rated through the URL parameters and stores those in CSV file. 
+The server-side script (`RatingManager.php`) is responsible for processing and storing the rating data. It receives the rating value and the ID of the item being rated through the URL parameters and stores those with StorageInterface object (StorageCSV class to store in the file in the example).
 
 ### Example
 
