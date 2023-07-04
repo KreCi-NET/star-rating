@@ -1,6 +1,6 @@
 const failOverID = 1; // Default product ID if not provided from URL
 const stars = document.querySelectorAll('.rating-stars .star');
-let currentRating = 5; // Default rating if no data for selected ID
+let currentRating = 5; // Default rating if no data for selected ID returned
 let id = 0; // Default product ID if not provided from URL
 
 // Mouse over and click listeners
@@ -66,8 +66,11 @@ fetch(url)
     .then(response => response.json())
     .then(data => {
     const initialRating = data.average;
+    const totalRatings = data.total;
     currentRating = initialRating;
     fillStars(initialRating);
+    document.getElementById('averageSpan').textContent = initialRating;
+    document.getElementById('totalSpan').textContent = totalRatings;
     })
     .catch(error => {
     console.error('Error:', error);
@@ -82,6 +85,7 @@ const url = `rating.php?id=${id}&type=set&rating=${rating}`;
 fetch(url)
     .then(response => {
     if (response.ok) {
+        getInitialRating();
         console.log('Rating has been sent!');
     } else {
         console.error('The error occurred while submitting the rating.');
