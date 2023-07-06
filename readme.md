@@ -11,7 +11,7 @@ This rating script is a JavaScript/PHP component that allows users to rate an el
 
 ### Demo
 
-Here you will find an implemented [star rating demo](https://dev.kreci.net/stars/). You may click on stars to submit the rating to the server and refresh the page to see average rating.
+Here you will find an implemented [star rating demo](https://dev.kreci.net/star-rating/vendor/kreci-net/star-rating/src/example.html). You may click on stars to submit the rating to the server and refresh the page to see average rating.
 
 ### Usage
 
