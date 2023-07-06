@@ -78,22 +78,36 @@ fetch(url)
     });
 }
 
+// Sending the rating to local strorage
+function localStorageManager(rating) {
+    const storedRatings = JSON.parse(localStorage.getItem('productRatings')) || {};
+
+    if (!storedRatings[id]) {
+        storedRatings[id] = rating;
+        localStorage.setItem('productRatings', JSON.stringify(storedRatings));
+        return true;
+    }
+    return false;
+}
+
 // Sending the rating to the rating.php file.
 function sendRating(rating) {
-const url = `rating.php?id=${id}&type=set&rating=${rating}`;
+    if (localStorageManager(rating)) {
+        const url = `rating.php?id=${id}&type=set&rating=${rating}`;
 
-fetch(url)
-    .then(response => {
-    if (response.ok) {
-        getInitialRating();
-        console.log('Rating has been sent!');
-    } else {
-        console.error('The error occurred while submitting the rating.');
+        fetch(url)
+            .then(response => {
+            if (response.ok) {
+                console.log('Rating has been sent!');
+            } else {
+                console.error('The error occurred while submitting the rating.');
+            }
+            })
+            .catch(error => {
+            console.error('Error:', error);
+            });
     }
-    })
-    .catch(error => {
-    console.error('Error:', error);
-    });
+    getInitialRating();
 }
 
 // Calling the function to retrieve the initial rating upon page load.
