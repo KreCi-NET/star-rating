@@ -47,12 +47,4 @@ class ProductClass
         $this->ratingAverage = (($this->ratingAverage * ($this->ratingTotal - 1)) + $rating) / $this->ratingTotal;
         $this->saveProduct();
     }
-
-    public function getJSON(): string
-    {
-        $ratingData['id'] = $this->productID;
-        $ratingData['average'] = $this->ratingAverage;
-        $ratingData['total'] = $this->ratingTotal;
-        return json_encode($ratingData);
-    }
 }

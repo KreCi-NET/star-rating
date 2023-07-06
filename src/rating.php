@@ -24,4 +24,5 @@ if ($rating !== false && $type === 'set') {
 } elseif ($type === 'get') {
     $productRating = $ratingManager->getRating($productId);
     echo $productRating;
+    //echo $_SESSION['csrfToken'];
 }

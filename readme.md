@@ -8,6 +8,8 @@ This rating script is a JavaScript/PHP component that allows users to rate an el
 - Updates the star colors dynamically based on the user's interaction.
 - Sends the rating data to the server-side `rating.php` script for storage.
 - Retrieves the initial rating from the `rating.php` script upon page load.
+- One user is limited to mae only one rating per product ID with LocalStorage
+- PHP API is protected from fake ratings with CSRF
 
 ### Demo
 
@@ -38,7 +40,7 @@ Note: You can modify the number of stars by adding or removing `<span>` elements
 
 ### Server-side Script (RatingManager.php)
 
-The server-side script (`RatingManager.php`) is responsible for processing and storing the rating data. It receives the rating value and the ID of the item being rated through the URL parameters and stores those with StorageInterface object (StorageCSV class to store in the file in the example).
+The server-side script (`RatingManager.php`) is responsible for API request authorization, processing and storing the rating data. It receives the rating value and the ID of the item being rated through the URL parameters and stores those with StorageInterface object (StorageCSV class to store in the file in the example).
 
 ### Example
 
