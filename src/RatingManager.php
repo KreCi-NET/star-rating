@@ -14,7 +14,9 @@ class RatingManager
     }
 
     private function generateCSRFToken() {
-        session_start();
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
         if (!isset($_SESSION['csrfToken']) || time() - $_SESSION['csrfTokenCreatedAt'] > 3600) {
             $this->csrfToken = bin2hex(random_bytes(32));
             $_SESSION['csrfToken'] = $this->csrfToken;
